@@ -1,0 +1,4 @@
+(
+    title: "Amesweep",
+    dimensions: Some((500, 500))
+)
