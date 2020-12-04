@@ -2,10 +2,13 @@ use amethyst::{Application, GameDataBuilder, core::TransformBundle, renderer::{R
 	application_root_dir,
 }};
 
-mod minesweeper;
-mod systems;
+use crate::states::GameState;
 
-use crate::minesweeper::GameState;
+mod components;
+mod enteties;
+mod resources;
+mod states;
+mod systems;
 
 fn main() -> amethyst::Result<()> {
 	amethyst::start_logger(Default::default());

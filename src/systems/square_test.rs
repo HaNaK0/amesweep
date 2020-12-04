@@ -13,10 +13,9 @@ use amethyst::{
 	},
 };
 
-use crate::minesweeper::TimeKeeper;
+use crate::components::TimeKeeper;
 
 pub struct SquareTestSystem ;
-
 
 impl<'s> System<'s> for SquareTestSystem {
 	type SystemData = (
