@@ -1,4 +1,8 @@
-use amethyst::{SimpleState, utils::application_root_dir, prelude::*};
+use amethyst::{
+	SimpleState, 
+	utils::application_root_dir, 
+	prelude::*
+};
 
 use log;
 
@@ -6,14 +10,6 @@ use crate::{
 	enteties::{initialize_camera, initialize_square}, 
 	resources::{load_sprite_sheet, GameConfig},
 };
-
-
-//TODO move these to a config somehow
-// const GAME_HEIGHT: f32 = 10.0;
-// const GAME_WIDTH: f32 = 10.0;
-
-// const GAME_PIXEL_WIDTH: f32 = 32.0 * GAME_WIDTH;
-// const GAME_PIXEL_HEIGHT: f32 = 32.0 * GAME_HEIGHT;
 
 pub struct GameState;
 
@@ -26,6 +22,7 @@ impl SimpleState for GameState {
 		initialize_camera(world, &game_config);
 		let sprite_sheet = load_sprite_sheet(world);
 		initialize_square(world, sprite_sheet, &game_config);
+		log::info!("End of State Start");
 	}
 }
 
