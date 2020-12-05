@@ -5,15 +5,15 @@ use amethyst::{
 	core::transform::Transform,
 };
 
-use crate::components::TimeKeeper;
+use crate::{resources::GameConfig, components::TimeKeeper};
 
-const GAME_HEIGHT: f32 = 10.0;
-const GAME_PIXEL_HEIGHT: f32 = 32.0 * GAME_HEIGHT;
 
-pub fn initialize_square(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>) {
+pub fn initialize_square(world: &mut World, sprite_sheet_handle: Handle<SpriteSheet>, config: &GameConfig) {
 	let mut transform = Transform::default();
 
-	transform.set_translation_xyz(GAME_PIXEL_HEIGHT * 0.5, GAME_PIXEL_HEIGHT * 0.5, 0.0);
+	let pixel_size = (config.game_width * config.tile_size, config.game_height * config.tile_size);
+
+	transform.set_translation_xyz(pixel_size.0 * 0.5, pixel_size.1 * 0.5, 0.0);
 
 	let sprite_render = SpriteRender::new(sprite_sheet_handle, 1);
 

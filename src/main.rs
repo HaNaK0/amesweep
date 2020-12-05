@@ -2,13 +2,13 @@ use amethyst::{Application, GameDataBuilder, core::TransformBundle, renderer::{R
 	application_root_dir,
 }};
 
-use crate::states::GameState;
-
 mod components;
 mod enteties;
 mod resources;
 mod states;
 mod systems;
+
+use crate::states::GameState;
 
 fn main() -> amethyst::Result<()> {
 	amethyst::start_logger(Default::default());

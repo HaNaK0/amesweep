@@ -4,20 +4,18 @@ use amethyst::{
 	renderer::Camera,
 };
 
-const GAME_HEIGHT: f32 = 10.0;
-const GAME_WIDTH: f32 = 10.0;
+use crate::resources::GameConfig;
 
-const GAME_PIXEL_WIDTH: f32 = 32.0 * GAME_WIDTH;
-const GAME_PIXEL_HEIGHT: f32 = 32.0 * GAME_HEIGHT;
-
-pub fn initialize_camera(world: &mut World) {
+pub fn initialize_camera(world: &mut World, config: &GameConfig) {
 	let mut transform = Transform::default();
 
-	transform.set_translation_xyz(GAME_PIXEL_WIDTH * 0.5, GAME_PIXEL_HEIGHT * 0.5, 1.0);
+	let pixel_size = (config.game_width * config.tile_size, config.game_height * config.tile_size);
+
+	transform.set_translation_xyz(pixel_size.0 * 0.5, pixel_size.1 * 0.5, 1.0);
 
 	world
 		.create_entity()
-		.with(Camera::standard_2d(GAME_PIXEL_WIDTH, GAME_PIXEL_WIDTH))
+		.with(Camera::standard_2d(pixel_size.0, pixel_size.1))
 		.with(transform)
 		.build();
 }
